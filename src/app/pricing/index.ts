@@ -13,11 +13,13 @@ export interface PricingTier {
 
 export const TIERS: PricingTier[] = [
   {
-    id: "individuals",
-    name: "Individuals",
+    id: "free",
+    name: "Free",
     price: {
       monthly: "Free",
+      monthlyID: "NA",
       yearly: "Free",
+      yearlyID: "NA",
     },
     description: "For your hobby projects",
     features: [
@@ -30,11 +32,13 @@ export const TIERS: PricingTier[] = [
     cta: "Get started",
   },
   {
-    id: "teams",
-    name: "Teams",
+    id: "pro_01k26wtb9v2d0gszsn2nx5hxyd",
+    name: "Pro",
     price: {
-      monthly: 90,
-      yearly: 75,
+      monthly: 12,
+      monthlyID: "PRO MONThly ID",
+      yearly: 120,
+      yearlyID: "PRO Yearly ID",
     },
     description: "Great for small businesses",
     features: [
@@ -48,11 +52,13 @@ export const TIERS: PricingTier[] = [
     popular: true,
   },
   {
-    id: "organizations",
-    name: "Organizations",
+    id: "ultra",
+    name: "Ultra",
     price: {
-      monthly: 120,
-      yearly: 100,
+      monthly: 25,
+      monthlyID: "ultra month",
+      yearly: 250,
+      yearlyID: "ultra yearly",
     },
     description: "Great for large businesses",
     features: [
@@ -65,11 +71,13 @@ export const TIERS: PricingTier[] = [
     cta: "Get started",
   },
   {
-    id: "enterprise",
-    name: "Enterprise",
+    id: "unlimited",
+    name: "Unlimited",
     price: {
-      monthly: "Custom",
-      yearly: "Custom",
+      monthly: 60,
+      monthlyID: "unlimited month",
+      yearly: 600,
+      yearlyID: "unlimited year",
     },
     description: "For multiple teams",
     features: [
@@ -79,7 +87,7 @@ export const TIERS: PricingTier[] = [
       "15 status pages",
       "200+ integrations",
     ],
-    cta: "Contact Us",
+    cta: "Get started",
     highlighted: true,
   },
 ];

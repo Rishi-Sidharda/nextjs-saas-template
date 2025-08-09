@@ -1,9 +1,14 @@
+"use client";
 import { TIERS } from "./index";
 import { cn } from "@/lib/utils";
 import { Badge } from "./Badge";
+import { auth, db } from "@/lib/firebase";
 import { Button } from "./Button";
 import NumberFlow from "@number-flow/react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { ArrowRight, BadgeCheck } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export const PricingCard = ({
   tier,
@@ -12,9 +17,19 @@ export const PricingCard = ({
   tier: (typeof TIERS)[0];
   paymentFrequency: string;
 }) => {
+  const [user, loading] = useAuthState(auth);
   const price = tier.price[paymentFrequency];
   const isHighlighted = tier.highlighted;
   const isPopular = tier.popular;
+  const router = useRouter();
+
+  const handleCheckout = () => {
+    if (paymentFrequency == "monthly") {
+      alert(tier.price.monthlyID);
+    } else if (paymentFrequency == "yearly") {
+      alert(tier.price.yearlyID);
+    }
+  };
 
   return (
     <div
@@ -53,7 +68,11 @@ export const PricingCard = ({
               value={price}
               className="text-4xl font-medium"
             />
-            <p className="-mt-2 text-xs font-medium">Per month/user</p>
+            <p className="-mt-2 text-xs font-medium pt-2">
+              {paymentFrequency === "monthly"
+                ? "per user / month"
+                : "per user / year"}
+            </p>
           </>
         ) : (
           <h1 className="text-4xl font-medium">{price}</h1>
@@ -90,7 +109,7 @@ export const PricingCard = ({
             "bg-accent text-foreground hover:bg-accent/95 cursor-pointer"
         )}
         onClick={() => {
-          alert(tier.id);
+          handleCheckout();
         }}
       >
         {tier.cta}

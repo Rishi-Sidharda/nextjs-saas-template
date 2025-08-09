@@ -42,7 +42,7 @@ export const Tab = ({
               : "bg-gray-300 hover:bg-gray-300"
           )}
         >
-          Save 35%
+          2 Months OFF🔥
         </Badge>
       )}
     </button>
