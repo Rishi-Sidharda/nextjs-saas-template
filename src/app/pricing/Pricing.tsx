@@ -2,7 +2,7 @@
 
 import { PricingCard } from "./PricingCard";
 import { PricingHeader } from "./PricingHeader";
-import { PAYMENT_FREQUENCIES, TIERS } from "./index";
+import { PAYMENT_FREQUENCIES, TIERS } from "../../lib/PricingTiers";
 import { useState } from "react";
 
 export const Pricing = () => {

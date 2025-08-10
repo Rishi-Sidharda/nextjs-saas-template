@@ -1,3 +1,18 @@
+import {
+  FreeID,
+  FreeMonthlyID,
+  FreeYearlyID,
+  ProID,
+  ProMonthlyID,
+  ProYearlyID,
+  UltraID,
+  UltraMonthlyID,
+  UltraYearlyID,
+  UnlimitedID,
+  UnlimitedMonthlyID,
+  UnlimitedYearlyID,
+} from "./config";
+
 export const PAYMENT_FREQUENCIES = ["monthly", "yearly"];
 
 export interface PricingTier {
@@ -15,10 +30,10 @@ export interface PricingTier {
 
 export const TIERS: PricingTier[] = [
   {
-    id: "free",
+    id: FreeID,
     name: "Free",
-    monthlyID: "NA",
-    yearlyID: "NA",
+    monthlyID: FreeMonthlyID,
+    yearlyID: FreeYearlyID,
     price: {
       monthly: "Free",
       yearly: "Free",
@@ -34,14 +49,14 @@ export const TIERS: PricingTier[] = [
     cta: "Get started",
   },
   {
-    id: "pro_01k26wtb9v2d0gszsn2nx5hxyd",
+    id: ProID,
     name: "Pro",
-    monthlyID: "pri_01k26wv5pasere9xfamzwap1r8",
+    monthlyID: ProMonthlyID,
+    yearlyID: ProYearlyID,
     price: {
       monthly: 12,
       yearly: 120,
     },
-    yearlyID: "pri_01k276j857kp145kq47beybf64",
     description: "Great for small businesses",
     features: [
       "Unlimited phone calls",
@@ -54,14 +69,14 @@ export const TIERS: PricingTier[] = [
     popular: true,
   },
   {
-    id: "ultra",
+    id: UltraID,
     name: "Ultra",
-    monthlyID: "pri_01k2a53bkaryz39vm410fw1pfj",
+    monthlyID: UltraMonthlyID,
+    yearlyID: UltraYearlyID,
     price: {
       monthly: 25,
       yearly: 250,
     },
-    yearlyID: "pri_01k2a5412w1ccxqqk8b1tbta60",
     description: "Great for large businesses",
     features: [
       "Unlimited phone calls",
@@ -73,14 +88,14 @@ export const TIERS: PricingTier[] = [
     cta: "Get started",
   },
   {
-    id: "unlimited",
+    id: UnlimitedID,
     name: "Unlimited",
-    monthlyID: "pri_01k2a55ec2bpd1yzrpbbsyx72j",
+    monthlyID: UnlimitedMonthlyID,
+    yearlyID: UnlimitedYearlyID,
     price: {
       monthly: 60,
       yearly: 600,
     },
-    yearlyID: "pri_01k2a55spb0xrc7hxw3fq3w9p4",
     description: "For multiple teams",
     features: [
       "Everything in Organizations",

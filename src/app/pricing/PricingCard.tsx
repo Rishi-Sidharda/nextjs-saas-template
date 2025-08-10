@@ -1,14 +1,14 @@
 "use client";
-import { TIERS } from "./index";
+import { TIERS } from "../../lib/PricingTiers";
 import { cn } from "@/lib/utils";
 import { Badge } from "./Badge";
-import { auth, db } from "@/lib/firebase";
 import { Button } from "./Button";
 import NumberFlow from "@number-flow/react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { ArrowRight, BadgeCheck } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { usePaddle } from "@/lib/usePaddle";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db } from "@/lib/firebase";
 
 export const PricingCard = ({
   tier,
@@ -22,8 +22,13 @@ export const PricingCard = ({
   const isPopular = tier.popular;
   const router = useRouter();
   const { openCheckout } = usePaddle();
+  const [user, loading] = useAuthState(auth);
 
   const handleCheckout = () => {
+    if (!user) {
+      router.push("/login");
+    }
+
     const priceId =
       paymentFrequency === "monthly" ? tier.monthlyID : tier.yearlyID;
 

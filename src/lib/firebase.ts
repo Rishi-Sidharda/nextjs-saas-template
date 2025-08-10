@@ -2,15 +2,24 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import {
+  ApiKey,
+  AuthDomain,
+  ProjectId,
+  StorageBucket,
+  MessagingSenderId,
+  AppId,
+  MeasurementId,
+} from "./config";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "your-project-id.firebaseapp.com",
-  projectId: "your-project-id",
-  storageBucket: "your-project-id.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
-  measurementId: "YOUR_MEASUREMENT_ID", // optional (Analytics)
+  apiKey: ApiKey,
+  authDomain: AuthDomain,
+  projectId: ProjectId,
+  storageBucket: StorageBucket,
+  messagingSenderId: MessagingSenderId,
+  appId: AppId,
+  measurementId: MeasurementId, // optional (Analytics)
 };
 
 const app = initializeApp(firebaseConfig);
