@@ -8,7 +8,7 @@ import NumberFlow from "@number-flow/react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ArrowRight, BadgeCheck } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { usePaddle } from "@/lib/usePaddle";
 
 export const PricingCard = ({
   tier,
@@ -17,18 +17,17 @@ export const PricingCard = ({
   tier: (typeof TIERS)[0];
   paymentFrequency: string;
 }) => {
-  const [user, loading] = useAuthState(auth);
   const price = tier.price[paymentFrequency];
   const isHighlighted = tier.highlighted;
   const isPopular = tier.popular;
   const router = useRouter();
+  const { openCheckout } = usePaddle();
 
   const handleCheckout = () => {
-    if (paymentFrequency == "monthly") {
-      alert(tier.price.monthlyID);
-    } else if (paymentFrequency == "yearly") {
-      alert(tier.price.yearlyID);
-    }
+    const priceId =
+      paymentFrequency === "monthly" ? tier.monthlyID : tier.yearlyID;
+
+    openCheckout({ priceId });
   };
 
   return (
@@ -108,9 +107,7 @@ export const PricingCard = ({
           isHighlighted &&
             "bg-accent text-foreground hover:bg-accent/95 cursor-pointer"
         )}
-        onClick={() => {
-          handleCheckout();
-        }}
+        onClick={handleCheckout}
       >
         {tier.cta}
       </Button>

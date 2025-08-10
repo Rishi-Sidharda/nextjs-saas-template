@@ -7,6 +7,8 @@ export interface PricingTier {
   description: string;
   features: string[];
   cta: string;
+  monthlyID: string;
+  yearlyID: string;
   highlighted?: boolean;
   popular?: boolean;
 }
@@ -15,11 +17,11 @@ export const TIERS: PricingTier[] = [
   {
     id: "free",
     name: "Free",
+    monthlyID: "NA",
+    yearlyID: "NA",
     price: {
       monthly: "Free",
-      monthlyID: "NA",
       yearly: "Free",
-      yearlyID: "NA",
     },
     description: "For your hobby projects",
     features: [
@@ -34,12 +36,12 @@ export const TIERS: PricingTier[] = [
   {
     id: "pro_01k26wtb9v2d0gszsn2nx5hxyd",
     name: "Pro",
+    monthlyID: "pri_01k26wv5pasere9xfamzwap1r8",
     price: {
       monthly: 12,
-      monthlyID: "PRO MONThly ID",
       yearly: 120,
-      yearlyID: "PRO Yearly ID",
     },
+    yearlyID: "pri_01k276j857kp145kq47beybf64",
     description: "Great for small businesses",
     features: [
       "Unlimited phone calls",
@@ -54,12 +56,12 @@ export const TIERS: PricingTier[] = [
   {
     id: "ultra",
     name: "Ultra",
+    monthlyID: "pri_01k2a53bkaryz39vm410fw1pfj",
     price: {
       monthly: 25,
-      monthlyID: "ultra month",
       yearly: 250,
-      yearlyID: "ultra yearly",
     },
+    yearlyID: "pri_01k2a5412w1ccxqqk8b1tbta60",
     description: "Great for large businesses",
     features: [
       "Unlimited phone calls",
@@ -73,12 +75,12 @@ export const TIERS: PricingTier[] = [
   {
     id: "unlimited",
     name: "Unlimited",
+    monthlyID: "pri_01k2a55ec2bpd1yzrpbbsyx72j",
     price: {
       monthly: 60,
-      monthlyID: "unlimited month",
       yearly: 600,
-      yearlyID: "unlimited year",
     },
+    yearlyID: "pri_01k2a55spb0xrc7hxw3fq3w9p4",
     description: "For multiple teams",
     features: [
       "Everything in Organizations",
