@@ -27,12 +27,12 @@ export const PricingCard = ({
   const handleCheckout = () => {
     if (!user) {
       router.push("/login");
+    } else if (user) {
+      const priceId =
+        paymentFrequency === "monthly" ? tier.monthlyID : tier.yearlyID;
+
+      openCheckout({ priceId });
     }
-
-    const priceId =
-      paymentFrequency === "monthly" ? tier.monthlyID : tier.yearlyID;
-
-    openCheckout({ priceId });
   };
 
   return (

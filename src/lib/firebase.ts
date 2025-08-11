@@ -9,7 +9,6 @@ import {
   StorageBucket,
   MessagingSenderId,
   AppId,
-  MeasurementId,
 } from "./config";
 
 const firebaseConfig = {
@@ -19,7 +18,6 @@ const firebaseConfig = {
   storageBucket: StorageBucket,
   messagingSenderId: MessagingSenderId,
   appId: AppId,
-  measurementId: MeasurementId, // optional (Analytics)
 };
 
 const app = initializeApp(firebaseConfig);

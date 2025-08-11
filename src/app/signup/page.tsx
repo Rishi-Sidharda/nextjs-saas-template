@@ -14,11 +14,13 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(""); // NEW: error state
 
   const router = useRouter();
 
   const handleEmailSignup = async (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent form from submitting the default way
+    e.preventDefault();
+    setError(""); // clear old error
 
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -34,32 +36,36 @@ export default function SignUp() {
       });
 
       router.push("/dashboard");
-    } catch (error) {
-      console.error("Signup error:", error);
-      // You can show a toast here if needed
+    } catch (error: any) {
+      setError(error.message || "Signup failed. Please try again.");
     }
   };
 
   const handleGoogleSignup = async () => {
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user;
+    setError(""); // clear old error
 
-    // Check if user document already exists
-    const userDocRef = doc(db, "users", user.uid);
-    const userDoc = await getDoc(userDocRef);
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
 
-    if (!userDoc.exists()) {
-      await setDoc(userDocRef, {
-        email: user.email,
-        plan: "free", // default
-      });
+      const userDocRef = doc(db, "users", user.uid);
+      const userDoc = await getDoc(userDocRef);
+
+      if (!userDoc.exists()) {
+        await setDoc(userDocRef, {
+          email: user.email,
+          plan: "free",
+        });
+      }
+
+      router.push("/dashboard");
+    } catch (error: any) {
+      setError(error.message || "Google signup failed. Please try again.");
     }
-
-    router.push("/dashboard");
   };
 
   return (
-    <div className={"h-screen w-screen flex items-center justify-center "}>
+    <div className={"h-screen w-screen flex items-center justify-center"}>
       <Card className="w-full max-w-sm p-4 rounded-xl shadow-xl">
         <CardHeader>
           <CardTitle className="pb-8 pt-4">Echo Chat</CardTitle>
@@ -95,9 +101,9 @@ export default function SignUp() {
                     required
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <button 
+                  <button
                     type="button"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+                    className="absolute cursor-pointer right-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                     onClick={() => setShowPassword((prev) => !prev)}
                   >
                     {showPassword ? (
@@ -108,13 +114,20 @@ export default function SignUp() {
                   </button>
                 </div>
               </div>
+
+              {/* Error message */}
+              {error && (
+                <p className="text-red-500 text-sm text-center">{error}</p>
+              )}
+
               <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full">
+                <Button type="submit" className="w-full cursor-pointer">
                   Create Account
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full"
+                  className="w-full cursor-pointer"
+                  type="button"
                   onClick={handleGoogleSignup}
                 >
                   Signup with Google
