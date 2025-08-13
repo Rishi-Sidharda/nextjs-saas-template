@@ -1,3 +1,5 @@
+Use this command to create a new next app with this template -> npx create-next-app -e "https://github.com/Rishi-Sidharda/nextjs-saas-template" {your app name}
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
