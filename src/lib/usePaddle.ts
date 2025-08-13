@@ -2,9 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { Paddle, initializePaddle } from "@paddle/paddle-js";
+import { getAuth } from "firebase/auth";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db } from "@/lib/firebase";
 
 export function usePaddle() {
   const [paddle, setPaddle] = useState<Paddle>();
+  const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
     initializePaddle({
@@ -16,9 +21,11 @@ export function usePaddle() {
   const openCheckout = ({
     priceId,
     successUrl = "http://localhost:3000/dashboard",
+    plan
   }: {
     priceId: string;
     successUrl?: string;
+    plan: string;
   }) => {
     if (!paddle) {
       alert("Paddle not initialized yet.");
@@ -31,6 +38,7 @@ export function usePaddle() {
         displayMode: "overlay",
         successUrl,
       },
+      customData: { firebaseUserId: user?.uid, plan: plan },
     });
   };
 

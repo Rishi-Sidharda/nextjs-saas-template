@@ -1,18 +1,3 @@
-import {
-  FreeID,
-  FreeMonthlyID,
-  FreeYearlyID,
-  ProID,
-  ProMonthlyID,
-  ProYearlyID,
-  UltraID,
-  UltraMonthlyID,
-  UltraYearlyID,
-  UnlimitedID,
-  UnlimitedMonthlyID,
-  UnlimitedYearlyID,
-} from "./config";
-
 export const PAYMENT_FREQUENCIES = ["monthly", "yearly"];
 
 export interface PricingTier {
@@ -30,10 +15,10 @@ export interface PricingTier {
 
 export const TIERS: PricingTier[] = [
   {
-    id: FreeID,
+    id: process.env.NEXT_PUBLIC_PADDLE_FREE_ID!,
     name: "Free",
-    monthlyID: FreeMonthlyID,
-    yearlyID: FreeYearlyID,
+    monthlyID: process.env.NEXT_PUBLIC_PADDLE_FREE_MONTHLY_ID!,
+    yearlyID: process.env.NEXT_PUBLIC_PADDLE_FREE_YEARLY_ID!,
     price: {
       monthly: "Free",
       yearly: "Free",
@@ -49,10 +34,10 @@ export const TIERS: PricingTier[] = [
     cta: "Get started",
   },
   {
-    id: ProID,
+    id: process.env.NEXT_PUBLIC_PADDLE_PRO_ID!,
     name: "Pro",
-    monthlyID: ProMonthlyID,
-    yearlyID: ProYearlyID,
+    monthlyID: process.env.NEXT_PUBLIC_PADDLE_PRO_MONTHLY_ID!,
+    yearlyID: process.env.NEXT_PUBLIC_PADDLE_PRO_YEARLY_ID!,
     price: {
       monthly: 12,
       yearly: 120,
@@ -69,10 +54,10 @@ export const TIERS: PricingTier[] = [
     popular: true,
   },
   {
-    id: UltraID,
+    id: process.env.NEXT_PUBLIC_PADDLE_ULTRA_ID!,
     name: "Ultra",
-    monthlyID: UltraMonthlyID,
-    yearlyID: UltraYearlyID,
+    monthlyID: process.env.NEXT_PUBLIC_PADDLE_ULTRA_MONTHLY_ID!,
+    yearlyID: process.env.NEXT_PUBLIC_PADDLE_ULTRA_YEARLY_ID!,
     price: {
       monthly: 25,
       yearly: 250,
@@ -88,10 +73,10 @@ export const TIERS: PricingTier[] = [
     cta: "Get started",
   },
   {
-    id: UnlimitedID,
+    id: process.env.NEXT_PUBLIC_PADDLE_UNLIMITED_ID!,
     name: "Unlimited",
-    monthlyID: UnlimitedMonthlyID,
-    yearlyID: UnlimitedYearlyID,
+    monthlyID: process.env.NEXT_PUBLIC_PADDLE_UNLIMITED_MONTHLY_ID!,
+    yearlyID: process.env.NEXT_PUBLIC_PADDLE_UNLIMITED_YEARLY_ID!,
     price: {
       monthly: 60,
       yearly: 600,

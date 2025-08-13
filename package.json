@@ -11,6 +11,7 @@
   "dependencies": {
     "@number-flow/react": "^0.5.10",
     "@paddle/paddle-js": "^1.4.2",
+    "@paddle/paddle-node-sdk": "^3.2.0",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-switch": "^1.2.5",
@@ -20,8 +21,9 @@
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.536.0",
     "next": "15.4.5",
+    "ngrok": "^5.0.0-beta.2",
     "number-flow": "^0.5.8",
-    "paddle-sdk": "^4.7.0",
+    "paddle-sdk": "^4.0.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-firebase-hooks": "^5.1.1",

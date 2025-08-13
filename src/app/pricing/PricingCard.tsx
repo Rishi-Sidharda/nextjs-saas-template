@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { usePaddle } from "@/lib/usePaddle";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "@/lib/firebase";
+import { doc, updateDoc } from "firebase/firestore";
 
 export const PricingCard = ({
   tier,
@@ -30,8 +31,9 @@ export const PricingCard = ({
     } else if (user) {
       const priceId =
         paymentFrequency === "monthly" ? tier.monthlyID : tier.yearlyID;
+      const plan = tier.name;
 
-      openCheckout({ priceId });
+      openCheckout({ priceId, plan });
     }
   };
 
