@@ -20,8 +20,8 @@ export function usePaddle() {
 
   const openCheckout = ({
     priceId,
-    successUrl = "http://localhost:3000/dashboard",
-    plan
+    successUrl = "",
+    plan,
   }: {
     priceId: string;
     successUrl?: string;
