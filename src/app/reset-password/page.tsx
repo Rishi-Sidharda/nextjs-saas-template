@@ -1,5 +1,7 @@
 "use client";
 
+// ADD THE DEFAULT URL IN FIREBASE AUTHENTICATION RESET-PASSWORD TEMPLATE
+
 import { useState, useEffect, FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { auth } from "@/lib/firebase";
