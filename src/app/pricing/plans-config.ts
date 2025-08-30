@@ -1,4 +1,3 @@
-// no need to manually add this file. already added whenever you install a component.
 export const plans = [
   {
     id: "starter",
@@ -11,7 +10,7 @@ export const plans = [
   },
   {
     id: "pdt_4rfLKf9G2xYhvvWH2bRPr",
-    title: "pro",
+    title: "Pro",
     description: "Perfect for medium use",
     monthlyPrice: "$10",
     yearlyPrice: "$100",
@@ -20,7 +19,7 @@ export const plans = [
   },
   {
     id: "pdt_QngqSeYMe0BaG7eBC02TQ",
-    title: "ultra",
+    title: "Ultra",
     description: "Perfect for extreme use",
     monthlyPrice: "$20",
     yearlyPrice: "$200",

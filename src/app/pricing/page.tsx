@@ -12,10 +12,28 @@ export default function Pricing() {
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
 
-  async function actionButton(planId: any, billingCycle: any) {
+  async function actionButton(planTitle: any, billingCycle: any) {
     if (!user) {
       router.push("/login");
       return;
+    }
+
+    if (billingCycle == "yearly") {
+      if (planTitle == "Starter") {
+        alert("Starter Yearly");
+      } else if (planTitle == "Pro") {
+        alert("Pro Yearly");
+      } else if (planTitle == "Ultra") {
+        alert("Ultra Yearly");
+      }
+    } else if (billingCycle == "monthly") {
+      if (planTitle == "Starter") {
+        alert("Starter Monthly");
+      } else if (planTitle == "Pro") {
+        alert("Pro Monthly");
+      } else if (planTitle == "Ultra") {
+        alert("Ultra Monthly");
+      }
     }
   }
 
@@ -26,7 +44,9 @@ export default function Pricing() {
         className="w-full max-w-4xl mx-auto"
         title={`We offer ${plans.length} plans`}
         description="Choose the plan that's right for you"
-        onPlanSelect={(planId, billingCycle) => alert(billingCycle)}
+        onPlanSelect={(planTitle, billingCycle) =>
+          actionButton(planTitle, billingCycle)
+        }
         size="medium" // small, medium, large
         theme="classic" // minimal or clas
         // sic

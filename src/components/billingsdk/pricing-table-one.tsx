@@ -459,7 +459,7 @@ export function PricingTableOne({
                   <Button
                     className={buttonVariants({ theme })}
                     onClick={() =>
-                      onPlanSelect?.(plan.id, isAnnually ? "yearly" : "monthly")
+                      onPlanSelect?.(plan.title, isAnnually ? "yearly" : "monthly")
                     }
                     aria-label={`Select ${plan.title} plan`}
                   >
