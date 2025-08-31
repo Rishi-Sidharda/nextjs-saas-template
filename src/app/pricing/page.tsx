@@ -12,29 +12,13 @@ export default function Pricing() {
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
 
-  async function actionButton(planTitle: any, billingCycle: any) {
+  async function actionButton(planTitle: string, billingCycle: string) {
     if (!user) {
       router.push("/login");
       return;
     }
 
-    if (billingCycle == "yearly") {
-      if (planTitle == "Starter") {
-        alert("Starter Yearly");
-      } else if (planTitle == "Pro") {
-        alert("Pro Yearly");
-      } else if (planTitle == "Ultra") {
-        alert("Ultra Yearly");
-      }
-    } else if (billingCycle == "monthly") {
-      if (planTitle == "Starter") {
-        alert("Starter Monthly");
-      } else if (planTitle == "Pro") {
-        alert("Pro Monthly");
-      } else if (planTitle == "Ultra") {
-        alert("Ultra Monthly");
-      }
-    }
+    // Map your plan names + billing cycle to Dodo plan IDs
   }
 
   return (
