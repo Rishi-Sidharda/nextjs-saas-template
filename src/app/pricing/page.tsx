@@ -18,7 +18,39 @@ export default function Pricing() {
       return;
     }
 
-    // Map your plan names + billing cycle to Dodo plan IDs
+    let productId: string = "";
+    const firebaseUserId = user?.uid
+
+    if (planTitle == "Starter") {
+      if (billingCycle == "monthly") {
+        productId = ""; // Starter Monthly Plan ID
+      } else if (billingCycle == "yearly") {
+        productId = ""; // Starter Monthly Plan ID
+      }
+    } else if (planTitle == "Pro") {
+      if (billingCycle == "monthly") {
+        productId = "pdt_4rfLKf9G2xYhvvWH2bRPr"; // Starter Monthly Plan ID
+      } else if (billingCycle == "yearly") {
+        productId = "pdt_QNk75gweEsCco7vKDR3Xz"; // Starter Monthly Plan ID
+      }
+    } else if (planTitle == "Ultra") {
+      if (billingCycle == "monthly") {
+        productId = "pdt_QngqSeYMe0BaG7eBC02TQ"; // Starter Monthly Plan ID
+      } else if (billingCycle == "yearly") {
+        productId = "pdt_cNWNQJDmTFbKxobsGxI5a"; // Starter Monthly Plan ID
+      }
+    }
+
+    let productType = "subscription";
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/checkout/${productType}?productId=${productId}`,
+      {
+        cache: "no-store",
+      }
+    );
+
+    const data = await response.json();
+    router.push(data.payment_link);
   }
 
   return (
